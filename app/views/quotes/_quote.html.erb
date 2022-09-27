@@ -1,3 +1,5 @@
+<%# app/views/quotes/_quote.html.erb %>
+
 <%= turbo_frame_tag quote do %>
   <div class="quote">
     <%= link_to quote.name,
@@ -7,7 +9,6 @@
       <%= button_to "Delete",
                     quote_path(quote),
                     method: :delete,
-                    form: { data: { turbo_frame: "_top" } },
                     class: "btn btn--light" %>
       <%= link_to "Edit",
                   edit_quote_path(quote),
