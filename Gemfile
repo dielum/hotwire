@@ -59,6 +59,12 @@ group :development, :test do
 end
 
 group :development do
+  gem "capistrano", "~> 3.17", require: false
+  gem "capistrano-rails"
+  gem 'capistrano3-puma'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-rbenv-install'
+  gem 'capistrano-logrotate'
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
