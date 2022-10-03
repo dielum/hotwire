@@ -2,4 +2,4 @@
 import '@hotwired/turbo-rails';
 import './controllers';
 
-console.log('entre');
+console.log('entre1');
