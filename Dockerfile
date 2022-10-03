@@ -18,10 +18,9 @@ RUN mkdir /hotwire
 WORKDIR /hotwire
 
 # BUNDLE_PATH
-ARG BUNDLE_PATH
-ENV BUNDLE_PATH $BUNDLE_PATH
-ENV GEM_PATH $BUNDLE_PATH
-ENV GEM_HOME $BUNDLE_PATH
+ENV BUNDLE_PATH /bundle
+ENV GEM_PATH /bundle
+ENV GEM_HOME /bundle
 
 # Instalar Gemas
 RUN gem install bundler:2.3.10
@@ -38,7 +37,10 @@ RUN yarn install
 # Se copia lo que resta del proyecto
 ADD . /hotwire
 
+# Se compilan assets
+RUN bundle exec rails assets:clobber && bundle exec rails assets:precompile
+RUN rm -f /hotwire/tmp/pids/server.pid
+
 # Se ejecuta el servidor
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
+EXPOSE 3000
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
