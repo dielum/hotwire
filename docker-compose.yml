@@ -36,30 +36,6 @@ services:
       - "3000:3000"
     depends_on:
       - "db"
-      # - "css"
-      # - "js"
-
-  css:
-    <<: *web
-    command: yarn build:css --watch
-    ports:
-      - "3035:3035"
-  #   build: 
-  #     context: .
-  #   command: yarn build:css --watch
-  #   depends_on:
-  #     - "db"
-  js:
-    <<: *web
-    command: yarn build --watch
-    ports:
-      - "3036:3036"
-  # js:
-  #   build: 
-  #     context: .
-  #   command: yarn build --watch
-  #   depends_on:
-  #     - "db"
 
 volumes:
   db:
