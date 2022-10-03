@@ -13,7 +13,7 @@ services:
     expose:
       - '5432'
   web:
-    image: web
+    image: hotwire_web:latest
     build: 
       context: .
       args:
@@ -37,16 +37,17 @@ services:
       - "db"
 
   css:
-    image: web
+    image: hotwire_web:latest
     depends_on:
       - "web"
     command: yarn build:css --watch
 
   js:
-    image: web
+    image: hotwire_web:latest
     depends_on:
       - "web"
     command: yarn build --watch
+    tty: true
 
 volumes:
   db:
