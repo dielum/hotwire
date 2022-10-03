@@ -24,7 +24,8 @@ default: &default
 development:
   <<: *default
   database: hotwire_development
-  host: <%= ENV['DB_HOST'] || 'localhost' %>
+  host: host.docker.internal
+  username: postgres
 
 # DB_HOST=db DB_USERNAME=postgres DB_PASSWORD=postgres rails db:create
 # The specified database role being used to connect to postgres.
