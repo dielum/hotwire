@@ -20,13 +20,17 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch("POSTGRES_HOST") { "localhost" } %>
+  username: <%= ENV.fetch("POSTGRES_USER") { nil }  %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD") { nil } %>
+  port: <%= ENV.fetch("POSTGRES_PORT") { 5432 } %>
 
 development:
   <<: *default
   database: hotwire_development
-  host: <%= ENV['DB_HOST'] || 'localhost' %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+  # host: <%= ENV['DB_HOST'] || 'localhost' %>
+  # username: <%= ENV['DB_USERNAME'] %>
+  # password: <%= ENV['DB_PASSWORD'] %>
 
 # DB_HOST=db DB_USERNAME=postgres DB_PASSWORD=postgres rails db:create
 # The specified database role being used to connect to postgres.
@@ -62,9 +66,9 @@ development:
 test:
   <<: *default
   database: hotwire_test
-  host: <%= ENV['DB_HOST'] || 'localhost' %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+  # host: <%= ENV['DB_HOST'] || 'localhost' %>
+  # username: <%= ENV['DB_USERNAME'] %>
+  # password: <%= ENV['DB_PASSWORD'] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -90,4 +94,5 @@ production:
   <<: *default
   database: hotwire_production
   username: postgres
-  password: <%= ENV["HOTWIRE_DATABASE_PASSWORD"] %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>
+  host: <%= ENV["DB_HOST"] %>
