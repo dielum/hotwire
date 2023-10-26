@@ -3,7 +3,7 @@ image: dielume/hotwire
 
 servers:
   web:
-    hosts: 143.198.134.2
+    hosts: 164.92.101.163
     labels:
       traefik.http.routers.kiqr_cloud.rule: Host(`kamal.website`)
       traefik.http.routers.kiqr_cloud_secure.entrypoints: websecure
@@ -23,7 +23,7 @@ traefik:
     entryPoints.web.http.redirections.entryPoint.to: websecure
     entryPoints.web.http.redirections.entryPoint.scheme: https
     entryPoints.web.http.redirections.entrypoint.permanent: true
-    certificatesResolvers.letsencrypt.acme.email: 'sometest@gmail.com'
+    certificatesResolvers.letsencrypt.acme.email: 'diego.lume.a@gmail.com'
     certificatesResolvers.letsencrypt.acme.storage: '/letsencrypt/acme.json'
     certificatesResolvers.letsencrypt.acme.httpchallenge: true
     certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
@@ -47,7 +47,7 @@ env:
 accessories:
   redis:
     image: redis:6.2.4
-    host: 143.198.134.2
+    host: 164.92.101.163
     port: 6379
     env:
       directories:
@@ -55,7 +55,7 @@ accessories:
 
   db:
     image: postgres:13.3
-    host: 143.198.134.2
+    host: 164.92.101.163
     port: 5432
     env:
       clear:
