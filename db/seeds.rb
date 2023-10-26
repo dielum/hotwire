@@ -8,3 +8,6 @@
 
 puts "\n== Seeding the database with fixtures =="
 system("bin/rails db:fixtures:load")
+
+company = Company.create(name: 'example')
+User.create(email: 'example@example.com', password: 'example', company: company)
