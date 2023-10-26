@@ -3,7 +3,30 @@ image: dielume/hotwire
 
 servers:
   web:
-    - 143.198.234.234
+    hosts: 137.184.233.138
+    labels:
+      traefik.http.routers.kiqr_cloud.rule: Host(`kamal.website`)
+      traefik.http.routers.kiqr_cloud_secure.entrypoints: websecure
+      traefik.http.routers.kiqr_cloud_secure.rule: Host(`kamal.website`)
+      traefik.http.routers.kiqr_cloud_secure.tls: true
+      traefik.http.routers.kiqr_cloud_secure.tls.certresolver: letsencrypt
+
+traefik:
+  options:
+    publish:
+      - '443:443'
+    volume:
+      - '/letsencrypt/acme.json:/letsencrypt/acme.json'
+  args:
+    entryPoints.web.address: ':80'
+    entryPoints.websecure.address: ':443'
+    entryPoints.web.http.redirections.entryPoint.to: websecure
+    entryPoints.web.http.redirections.entryPoint.scheme: https
+    entryPoints.web.http.redirections.entrypoint.permanent: true
+    certificatesResolvers.letsencrypt.acme.email: 'sometest@gmail.com'
+    certificatesResolvers.letsencrypt.acme.storage: '/letsencrypt/acme.json'
+    certificatesResolvers.letsencrypt.acme.httpchallenge: true
+    certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
 
 registry:
   username: dielume
@@ -12,7 +35,7 @@ registry:
 
 env:
   clear:
-    DB_HOST: 143.198.234.234
+    DB_HOST: 137.184.233.138
     RAILS_SERVE_STATIC_FILES: true
     RAILS_LOG_TO_STDOUT: true
     PT_SILENCE_AR_COMPAT_WARNING: true
@@ -24,7 +47,7 @@ env:
 accessories:
   redis:
     image: redis:6.2.4
-    host: 143.198.234.234
+    host: 137.184.233.138
     port: 6379
     env:
       directories:
@@ -32,7 +55,7 @@ accessories:
 
   db:
     image: postgres:13.3
-    host: 143.198.234.234
+    host: 137.184.233.138
     port: 5432
     env:
       clear:
