@@ -3,7 +3,9 @@ image: dielume/hotwire
 
 servers:
   web:
-    hosts: 164.92.101.163
+    hosts: 147.182.249.110
+    options:
+      network: 'kamal_network'
     labels:
       traefik.http.routers.kiqr_cloud.rule: Host(`kamal.website`)
       traefik.http.routers.kiqr_cloud_secure.entrypoints: websecure
@@ -13,6 +15,7 @@ servers:
 
 traefik:
   options:
+    network: 'kamal_network'
     publish:
       - '443:443'
     volume:
@@ -47,16 +50,20 @@ env:
 accessories:
   redis:
     image: redis:6.2.4
-    host: 164.92.101.163
+    host: 147.182.249.110
     port: 6379
+    options:
+      network: 'kamal_network'
     env:
       directories:
         - data:/data
 
   db:
     image: postgres:13.3
-    host: 164.92.101.163
+    host: 147.182.249.110
     port: 5432
+    options:
+      network: 'kamal_network'
     env:
       clear:
         POSTGRES_USER: postgres
