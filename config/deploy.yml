@@ -3,7 +3,7 @@ image: dielume/hotwire
 
 servers:
   web:
-    hosts: 147.182.249.110
+    hosts: 146.190.149.32
     options:
       network: 'kamal_network'
     labels:
@@ -50,7 +50,7 @@ env:
 accessories:
   redis:
     image: redis:6.2.4
-    host: 147.182.249.110
+    host: 146.190.149.32
     port: 6379
     options:
       network: 'kamal_network'
@@ -60,7 +60,7 @@ accessories:
 
   db:
     image: postgres:13.3
-    host: 147.182.249.110
+    host: 146.190.149.32
     port: 5432
     options:
       network: 'kamal_network'
