@@ -81,6 +81,14 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 apt-cache policy docker-ce
 ```
 
+#### Disable Docker iptables
+Create a file in `/etc/docker/daemon.json` with
+```json
+   {
+    "iptables": false
+   }
+```
+
 #### Create a Docker Network for Internal Communication
 
 Create a Docker network to facilitate internal communication between all the Docker containers:
