@@ -51,7 +51,7 @@ accessories:
   redis:
     image: redis:6.2.4
     host: 146.190.149.32
-    port: 6379
+    port: 127.0.0.1:6379:6379
     options:
       network: 'kamal_network'
     env:
@@ -61,7 +61,7 @@ accessories:
   db:
     image: postgres:13.3
     host: 146.190.149.32
-    port: 5432
+    port: 127.0.0.1:5432:5432
     options:
       network: 'kamal_network'
     env:
