@@ -7,11 +7,10 @@ servers:
     options:
       network: 'kamal_network'
     labels:
-      traefik.http.routers.kiqr_cloud.rule: Host(`kamal.website`)
-      traefik.http.routers.kiqr_cloud_secure.entrypoints: websecure
-      traefik.http.routers.kiqr_cloud_secure.rule: Host(`kamal.website`)
-      traefik.http.routers.kiqr_cloud_secure.tls: true
-      traefik.http.routers.kiqr_cloud_secure.tls.certresolver: letsencrypt
+      traefik.http.routers.hotwire.entrypoints: websecure
+      traefik.http.routers.hotwire.rule: Host(`kamal.website`)
+      traefik.http.routers.hotwire.tls: true
+      traefik.http.routers.hotwire.tls.certresolver: letsencrypt
 
 traefik:
   options:
