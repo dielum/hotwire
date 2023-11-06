@@ -109,7 +109,7 @@ docker ps
 
 #### Let's Encrypt Certification
 
-To secure your project with a TLS certificate from Let's Encrypt, point your domain to your VM's IP address using an `A` record. Then, go to the `config/deploy.yml` file and modify the values of `traefik.http.routers.kiqr_cloud.rule` and `traefik.http.routers.kiqr_cloud_secure.rule` to match your domain name.
+To secure your project with a TLS certificate from Let's Encrypt, point your domain to your VM's IP address using an `A` record. Then, go to the `config/deploy.yml` file and modify the value of `traefik.http.routers.hotwire.rule` to match your domain name.
 
 On the VM server, run the following commands (according to [Kamal Discussions](https://github.com/basecamp/kamal/discussions/112)):
 
