@@ -54,6 +54,9 @@ gem "bootsnap", require: false
 gem "simple_form", "~> 5.1.0"
 gem "devise", "~> 4.8.1"
 
+gem "sidekiq", "~> 7.2"
+gem "letter_opener_web", "~> 2.0"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -83,3 +86,4 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+

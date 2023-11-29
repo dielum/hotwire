@@ -5,10 +5,10 @@ services:
     volumes:
       - "postgres_data:/var/lib/postgresql/data"
     ports:
-      - "15432:5432"
+      - "15431:5432"
 
   redis:
-    image: redis:6.0-alpine
+    image: redis:7.0-alpine
     ports:
       - "16379:6379"
     volumes:
@@ -21,7 +21,7 @@ services:
     stdin_open: true
     tty: true
     ports:
-      - "3000:3000"
+      - "4000:3000"
     depends_on:
       postgres:
         condition: "service_started"

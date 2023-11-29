@@ -1,3 +1,4 @@
-W: bin/dc bundle exec rails server -b 0.0.0.0
-J: bin/dc yarn build --watch
-c: bin/dc yarn build:css --watch
+web: bin/dc bundle exec rails server -b 0.0.0.0
+js: bin/dc yarn build --watch
+css: bin/dc yarn build:css --watch
+sidekiq: bin/dc bundle exec sidekiq -C config/sidekiq.yml
