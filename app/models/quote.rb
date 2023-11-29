@@ -2,7 +2,7 @@ class Quote < ApplicationRecord
   has_many :line_item_dates, dependent: :destroy
   has_many :line_items, through: :line_item_dates
   belongs_to :company
-  after_create ->  {send_email }
+  after_create ->  { send_email }
   
   validates :name, presence: true
 
@@ -21,6 +21,6 @@ class Quote < ApplicationRecord
   private
 
   def send_email
-    QuoteMailer.with(quote: self).new_quote.deliver_later
+    QuoteMailer.with(quote: self.id).new_quote.deliver_later
   end
 end

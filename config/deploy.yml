@@ -12,6 +12,12 @@ servers:
       traefik.http.routers.hotwire.tls: true
       traefik.http.routers.hotwire.tls.certresolver: letsencrypt
 
+  sidekiq:
+    hosts: 146.190.149.32
+    cmd: bundle exec sidekiq -C config/sidekiq.yml
+    options:
+      network: 'kamal_network'
+
 traefik:
   options:
     network: 'kamal_network'
