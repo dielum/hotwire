@@ -56,6 +56,7 @@ gem "devise", "~> 4.8.1"
 
 gem "sidekiq", "~> 7.2"
 gem "letter_opener_web", "~> 2.0"
+gem "kamal", "~> 2.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

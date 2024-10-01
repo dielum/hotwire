@@ -40,3 +40,5 @@
 /.env*
 !/.env*.erb
 !/.env*.example
+.kamal/secrets*
+
