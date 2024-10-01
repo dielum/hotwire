@@ -5,8 +5,8 @@ servers:
   web:
     hosts:
       - 65.109.131.207
-    options:
-      network: 'kamal_network'
+    # options:
+    # network: 'kamal_network'
     labels:
       traefik.http.routers.hotwire.entrypoints: websecure
       traefik.http.routers.hotwire.rule: Host(`kamal.website`)
@@ -17,15 +17,17 @@ servers:
     hosts:
       - 65.109.131.207
     cmd: bundle exec sidekiq -C config/sidekiq.yml
-    options:
-      network: 'kamal_network'
+    # options:
+    # network: 'kamal_network'
 
 builder:
   remote: ssh://root@65.109.131.207
   arch:
     - amd64
     # host: ssh://root@65.109.131.207
-
+proxy:
+  ssl: true
+  host: kamal.website
 # traefik:
 #   options:
 #     network: 'kamal_network'
@@ -65,8 +67,8 @@ accessories:
     image: redis:6.2.4
     host: 65.109.131.207
     port: 127.0.0.1:6379:6379
-    options:
-      network: 'kamal_network'
+    # options:
+    # network: 'kamal_network'
     env:
       directories: 'data:/data'
 
@@ -74,8 +76,8 @@ accessories:
     image: postgres:13.3
     host: 65.109.131.207
     port: 127.0.0.1:5432:5432
-    options:
-      network: 'kamal_network'
+    # options:
+    # network: 'kamal_network'
     env:
       clear:
         POSTGRES_USER: postgres
